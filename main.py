@@ -48,6 +48,13 @@ def test(did_pass):
 
 # Function 1: count_vowels
 def count_vowels(s: str) -> int:
+    vowels = 'aeiouAEIOU'
+    count = 0
+    for character in s:
+        if character in vowels:
+            count +=1
+    return count
+
     """
     Count the number of vowels in a string.
 
@@ -75,8 +82,26 @@ def test_count_vowels():
     test(count_vowels("rhythm") == 0)
 
 
+
 # Function 2: merge_lists
 def merge_lists(list1: list, list2: list) -> list:
+    merged = []
+    x,y = 0, 0
+    while x < len (list1) and y < len (list2):
+        if list1[x] <= list2[y]:
+            merged.append(list1[x])
+            x +=1
+        else:
+            merged.append(list2[y])
+            y += 1
+    while x < len (list1):
+        merged.append(list1[x])
+        x += 1
+    while y < len (list2):
+        merged.append(list2[y])
+        y += 1
+    return merged
+
     """
     Merge two sorted lists into a single sorted list.
 
@@ -105,10 +130,17 @@ def test_merge_lists():
     test(merge_lists([1, 2, 3], [4, 5, 6]) == [1, 2, 3, 4, 5, 6])
     test(merge_lists([1, 3, 5, 7, 9], [2, 4, 6, 8, 10]) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     test(merge_lists([1, 1, 2, 3], [1, 2, 2, 3]) == [1, 1, 1, 2, 2, 2, 3, 3])
+    
 
 
 # Function 3: word_lengths
 def word_lengths(words: list) -> list:
+    lengths = []
+    for word in words:
+        lengths.append(len(word))
+    return lengths
+
+
     """
     Get the lengths of words in a list.
 
@@ -136,6 +168,12 @@ def test_word_lengths():
 
 # Function 4: reverse_string
 def reverse_string(s: str) -> str:
+    reversed_string = ""
+    for character in s:
+        reversed_string = character + reversed_string
+    return reversed_string
+
+
     """
     Reverse a string.
 
@@ -164,6 +202,13 @@ def test_reverse_string():
 
 # Function 5: intersection
 def intersection(list1: list, list2: list) -> list:
+    intersection_numbers = []
+    for number in list1:
+        if number in list2 and number not in intersection_numbers:
+            intersection_numbers.append(number)
+    return intersection_numbers
+
+
     """
     Find the intersection of two lists.
 
